@@ -1,6 +1,6 @@
 # Scopic Auction
 
-Built with NextJS with no RSC using (just REST API). Using SQLite for database, the DB is filled with dummy antiques items. There are random images for the items but generated with a seed. This project can be refactored using RSC and more love.
+Built with NextJS with no RSC using (just REST API). Using SQLite for database, the DB is filled with dummy antiques items. There are random images for the items but generated with a seed. This project can be refactored using RSC and more love. Please keep in my that admins can't place bids.
 
 ## Credentials
 
