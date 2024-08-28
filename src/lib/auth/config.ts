@@ -9,6 +9,16 @@ export const nextAuthOptions: NextAuthConfig = {
   },
   callbacks: {
     authorized: async ({ auth }) => !!auth,
+    jwt({ token, user }) {
+      if (user) {
+        token.isAdmin = user.isAdmin
+      }
+      return token
+    },
+    session({ session, token }) {
+      session.user.isAdmin = token.isAdmin
+      return session
+    },
   },
   providers: [
     Credentials({
@@ -27,26 +37,31 @@ export const nextAuthOptions: NextAuthConfig = {
           {
             name: 'user1',
             password: 'user1',
-            role: 'regular',
+            isAdmin: false,
           },
           {
             name: 'user2',
             password: 'user2',
-            role: 'regular',
+            isAdmin: false,
           },
           {
             name: 'admin1',
             password: 'admin1',
-            role: 'admin',
+            isAdmin: true,
           },
           {
             name: 'admin2',
             password: 'admin2',
-            role: 'admin',
+            isAdmin: true,
           },
         ]
         const user = users.find((user) => user.name === credentials.name && user.password === credentials.password)
-        return user ?? null
+        return user
+          ? {
+              name: user.name,
+              isAdmin: user.isAdmin,
+            }
+          : null
       },
     }),
   ],

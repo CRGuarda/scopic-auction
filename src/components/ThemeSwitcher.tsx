@@ -18,7 +18,7 @@ export const ThemeSwitcher = () => {
   const isDarkMode = resolvedTheme === 'dark'
 
   return (
-    <Button onClick={() => setTheme(isDarkMode ? 'light' : 'dark')} isIconOnly variant='light' title='Change theme'>
+    <Button onPress={() => setTheme(isDarkMode ? 'light' : 'dark')} isIconOnly variant='light' title='Change theme'>
       {isDarkMode ? <Sun size={24} weight='fill' /> : <Moon size={24} weight='fill' />}
     </Button>
   )
