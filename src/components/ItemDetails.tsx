@@ -18,7 +18,7 @@ export const ItemDetails = ({ itemId }: { itemId: string }) => {
 
   useEffect(() => {
     setId(itemId)
-  }, [setId])
+  }, [setId, itemId])
 
   if (isLoading) return <div>Loading...</div>
   if (error || (!isLoading && !results.length)) return notFound()

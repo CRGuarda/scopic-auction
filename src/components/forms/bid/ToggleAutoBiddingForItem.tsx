@@ -20,7 +20,7 @@ export const ToggleAutoBiddingForItem = ({ itemId, mutate }: { itemId: string; m
 
   useEffect(() => {
     data && setIsChecked(Boolean(data.items.find((item) => item.itemId === itemId)?.isActive))
-  }, [data])
+  }, [data, itemId])
 
   return (
     <div className='relative h-max'>
